@@ -66,7 +66,8 @@ defmodule Newsticker.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
-      {:deps_nix, "~> 0.0", only: :dev}
+      {:deps_nix, "~> 0.0", only: :dev},
+      {:exsync, "~> 0.4", only: :dev},
     ]
   end
 
@@ -83,7 +84,7 @@ defmodule Newsticker.MixProject do
       setup: ["deps.get", "ecto.setup", "assets.setup", "assets.build"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
+      test: ["ash.setup --quiet", "test"],
       "assets.setup": [
         "cmd npm --prefix assets ci",
         "tailwind.install --if-missing",
@@ -95,7 +96,8 @@ defmodule Newsticker.MixProject do
         "tailwind newsticker --minify",
         "esbuild newsticker --minify",
         "phx.digest"
-      ]
+      ],
+      "ash.setup": ["ash.setup", "run priv/repo/seeds.exs"]
     ]
   end
 end

@@ -17,6 +17,7 @@ config :spark,
     remove_parens?: true,
     "Ash.Resource": [
       section_order: [
+        :postgres,
         :resource,
         :code_interface,
         :actions,
@@ -39,6 +40,9 @@ config :spark,
 config :newsticker,
   ecto_repos: [Newsticker.Repo],
   generators: [timestamp_type: :utc_datetime]
+
+config :newsticker,
+  ash_domains: [Newsticker.Ticker]
 
 # Configures the endpoint
 config :newsticker, NewstickerWeb.Endpoint,
