@@ -33,6 +33,8 @@ defmodule Newsticker.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:oban, "~> 2.0"},
+      {:ash_oban, "~> 0.2"},
       {:req, "~> 0.5"},
       {:ash, "~> 3.0"},
       {:picosat_elixir, "~> 0.2"},
@@ -67,7 +69,7 @@ defmodule Newsticker.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.2"},
       {:deps_nix, "~> 0.0", only: :dev},
-      {:exsync, "~> 0.4", only: :dev},
+      {:exsync, "~> 0.4", only: :dev}
     ]
   end
 

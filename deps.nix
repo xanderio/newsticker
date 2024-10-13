@@ -139,6 +139,23 @@ let
         beamDeps = [ ash ash_phoenix gettext jason phoenix phoenix_html phoenix_live_view phoenix_view ];
       };
 
+    ash_oban =
+      let
+        version = "0.2.5";
+      in
+      buildMix {
+        inherit version;
+        name = "ash_oban";
+
+        src = fetchHex {
+          inherit version;
+          pkg = "ash_oban";
+          sha256 = "b0451cfc0e05f6ebe765ee9d70a2b5aa392ace783fa2a47d0e4dd41c1d7d26d9";
+        };
+
+        beamDeps = [ ash oban postgrex ];
+      };
+
     ash_phoenix =
       let
         version = "2.1.4";
@@ -585,6 +602,23 @@ let
           pkg = "nimble_pool";
           sha256 = "af2e4e6b34197db81f7aad230c1118eac993acc0dae6bc83bac0126d4ae0813a";
         };
+      };
+
+    oban =
+      let
+        version = "2.18.3";
+      in
+      buildMix {
+        inherit version;
+        name = "oban";
+
+        src = fetchHex {
+          inherit version;
+          pkg = "oban";
+          sha256 = "36ca6ca84ef6518f9c2c759ea88efd438a3c81d667ba23b02b062a0aa785475e";
+        };
+
+        beamDeps = [ ecto_sql jason postgrex telemetry ];
       };
 
     owl =

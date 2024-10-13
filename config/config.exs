@@ -55,6 +55,11 @@ config :newsticker, NewstickerWeb.Endpoint,
   pubsub_server: Newsticker.PubSub,
   live_view: [signing_salt: "Tk2Epk1M"]
 
+config :newsticker, Oban,
+  engine: Oban.Engines.Basic,
+  queues: [default: 10],
+  repo: Newsticker.Repo
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

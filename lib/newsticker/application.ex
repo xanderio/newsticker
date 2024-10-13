@@ -17,6 +17,11 @@ defmodule Newsticker.Application do
       # Start a worker by calling: Newsticker.Worker.start_link(arg)
       # {Newsticker.Worker, arg},
       # Start to serve requests, typically the last entry
+      {Oban,
+       AshOban.config(
+         Application.fetch_env!(:newsticker, :ash_domains),
+         Application.fetch_env!(:newsticker, Oban)
+       )},
       NewstickerWeb.Endpoint
     ]
 

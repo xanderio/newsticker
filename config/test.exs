@@ -21,6 +21,8 @@ config :newsticker, NewstickerWeb.Endpoint,
   secret_key_base: "c7nAQcXlKLAzxpCzo4PRA0ZURIoD6OpbaOElzgk6SIcerkBwRHNeL/XTm/bBcNqe",
   server: false
 
+config :newsticker, Oban, testing: :inline
+
 # In test we don't send emails.
 config :newsticker, Newsticker.Mailer, adapter: Swoosh.Adapters.Test
 
